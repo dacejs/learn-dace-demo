@@ -1,0 +1,25 @@
+{
+  "name": "learn-dace-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "dace"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dacejs/learn-dace-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dacejs/learn-dace-demo/issues"
+  },
+  "homepage": "https://github.com/dacejs/learn-dace-demo#readme",
+  "dependencies": {
+    "dace": "^1.0.0-beta.5",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  }
+}
