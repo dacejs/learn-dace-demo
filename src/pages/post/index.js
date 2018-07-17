@@ -6,42 +6,34 @@ import { fetchMovie } from './action';
 import reducer from './reducer';
 import Layout from '../../layouts/default';
 
+const defaultProps = {
+  movie: {}
+};
+
 function mapStateToProps(state) {
-  return { movie: state.movie || {} };
+  return { movie: state.post.data || defaultProps };
 }
 
 @prefetch({
-  key: 'movie',
+  key: 'post',
   reducer,
-  promise: ({ store: { dispatch }, match }) => Promise.all([
-    dispatch(fetchMovie(match.params.id))
-  ])
+  promise: ({ store: { dispatch }, match }) => dispatch(fetchMovie(match.params.id))
 })
 @connect(mapStateToProps, { fetchMovie })
 export default class Post extends Component {
   static propTypes = {
-    name: PropTypes.string,
-    summary: PropTypes.string,
-    image: PropTypes.shape({
-      medium: PropTypes.string
-    })
+    movie: PropTypes.object
   };
 
-  static defaultProps = {
-    name: '',
-    summary: '',
-    image: {
-      medium: ''
-    }
-  };
+  static defaultProps = defaultProps;
 
   render() {
-    const { name, summary, image } = this.props;
+    const { name, summary, image } = this.props.movie;
     return (
       <Layout>
         <h1>{name}</h1>
         <p>{summary}</p>
-        <img alt={`${name}`} src={image.medium} />
+        {image && <img alt={`${name}`} src={image.medium} />}
       </Layout>
     );
   }

@@ -1,6 +1,6 @@
-import { isLoaded, logger } from 'dace';
+import { isLoaded } from 'dace';
 
-export const FETCH_MOVIES = 'fetch_movie';
+export const FETCH_MOVIES = 'fetch_movies';
 export const fetchMovies = () => async (dispatch, getState, api) => {
   const { movies } = getState();
   if (!isLoaded(movies)) {
@@ -10,6 +10,6 @@ export const fetchMovies = () => async (dispatch, getState, api) => {
       payload: res
     });
   } else {
-    logger.info('state.movies已经获取过');
+    console.log('state.movies已经获取过');
   }
 };

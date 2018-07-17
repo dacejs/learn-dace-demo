@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { prefetch, Link } from 'dace';
+import { prefetch, Link, Head } from 'dace';
 import { fetchMovies } from './action';
 import reducer from './reducer';
 import Layout from '../../layouts/default';
 
+const defaultProps = {
+  movies: []
+};
+
 function mapStateToProps(state) {
-  return { movies: state.movies || [] };
+  return { movies: state.home.data || [] };
 }
 
 @prefetch({
-  key: 'movies',
+  key: 'home',
   reducer,
-  promise: ({ store: { dispatch } }) => Promise.all([
-    dispatch(fetchMovies())
-  ])
+  promise: ({ store: { dispatch } }) => dispatch(fetchMovies())
 })
 @connect(mapStateToProps, { fetchMovies })
 export default class Home extends Component {
@@ -27,34 +28,26 @@ export default class Home extends Component {
     }))
   };
 
-  static defaultProps = {
-    movies: []
-  };
-
-  head() {
-    const { movies } = this.props;
-    return (
-      <Helmet>
-        <title>{`${movies.length} movies Loaded`}</title>
-      </Helmet>
-    );
-  }
-
-  renderMovies() {
-    const { movies } = this.props;
-    return movies.map(movie => (
-      <li key={movie.id}>
-        <Link to={`/post/${movie.id}`}>{movie.name}</Link>
-      </li>
-    ));
-  }
+  static defaultProps = defaultProps;
 
   render() {
+    const { movies } = this.props;
+
     return (
       <Layout>
-        {this.head()}
+        <Head>
+          <title>{`${movies.length} movies Loaded`}</title>
+        </Head>
         <h1>Batman TV Shows</h1>
-        <ul>{this.renderMovies()}</ul>
+        <ul>
+          {
+            movies.map(movie => (
+              <li key={movie.id}>
+                <Link to={`/post/${movie.id}`}>{movie.name}</Link>
+              </li>
+            ))
+          }
+        </ul>
       </Layout>
     );
   }
