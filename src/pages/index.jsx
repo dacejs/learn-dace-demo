@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'dace';
-import Layout from '../../layouts/default';
+import Layout from '../layouts/default';
 
 const PostLink = props => (
   <li>
