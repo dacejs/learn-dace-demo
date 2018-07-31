@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from '../../layouts/default';
+import Layout from '../layouts/default';
 
 const Post = (props) => {
   const { query } = props.location;

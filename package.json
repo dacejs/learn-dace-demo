@@ -4,14 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "dace"
+    "start": "dace"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dacejs/learn-dace-demo.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dacejs/learn-dace-demo/issues"
