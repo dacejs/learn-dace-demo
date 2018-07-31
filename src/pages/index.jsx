@@ -3,7 +3,7 @@ import { Link } from 'dace';
 
 export default () => (
   <div>
+    <h1>Hello Dace</h1>
     <Link to="/about">About Page</Link>
-    <p>Hello Dace</p>
   </div>
 );
