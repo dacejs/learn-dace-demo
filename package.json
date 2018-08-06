@@ -4,20 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "dace"
+    "start": "dace"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dacejs/learn-dace-demo.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dacejs/learn-dace-demo/issues"
   },
   "homepage": "https://github.com/dacejs/learn-dace-demo#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "dace": "latest",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
