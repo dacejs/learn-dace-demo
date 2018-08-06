@@ -16,8 +16,8 @@
   },
   "homepage": "https://github.com/dacejs/learn-dace-demo#readme",
   "dependencies": {
-    "axios": "^0.18.0",
     "dace": "latest",
+    "dace-plugin-redux": "latest",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   }
