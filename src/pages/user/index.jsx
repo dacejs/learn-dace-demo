@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getInitialProps } from 'dace-plugin-redux';
 import { fetchUser } from './action';
 import reducer from './reducer';
 import Layout from '../../layouts/default';
 
-@getInitialProps({
-  reducer,
-  promise: ({ store: { dispatch }, match: { params } }) => dispatch(fetchUser(params.id))
-})
 @connect(state => state)
 export default class User extends Component {
   static propTypes = {
@@ -18,6 +13,11 @@ export default class User extends Component {
 
   static defaultProps = {
     user: {}
+  }
+
+  static getInitialProps = (ctx) => {
+    ctx.store.injectReducer(reducer);
+    return ctx.store.dispatch(fetchUser(ctx.match.params.id));
   }
 
   render() {
