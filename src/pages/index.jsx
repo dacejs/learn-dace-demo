@@ -19,6 +19,7 @@ export default class Index extends Component {
   static async getInitialProps() {
     const res = await axios.get('http://jsonplaceholder.typicode.com/posts');
     const posts = res.data.map(({ id, title }) => ({ id, title }));
+    console.log('--posts:', posts);
     return { posts };
   }
 

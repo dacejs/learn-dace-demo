@@ -16,6 +16,7 @@ export default class Post extends Component {
     const { id } = ctx.match.params;
     const res = await axios.get(`http://jsonplaceholder.typicode.com/posts/${id}`);
     const post = res.data;
+    console.log('--post:', post);
     return { post };
   }
 
