@@ -1,3 +1,3 @@
 module.exports = {
-  path: '/user/:id'
+  path: '/post/:id'
 };

@@ -1,12 +1,12 @@
-import { FETCH_USERS } from './action';
+import { FETCH_POSTS } from './action';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case FETCH_USERS:
+    case FETCH_POSTS:
       // 只能返回对象，不能返回数组
       return {
         ...state,
-        users: action.payload.data.map(({ id, name }) => ({ id, name }))
+        posts: action.payload.data.map(({ id, title }) => ({ id, title }))
       };
     default:
       return state;

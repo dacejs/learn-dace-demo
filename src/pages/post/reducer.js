@@ -1,12 +1,12 @@
-import { FETCH_USER } from './action';
+import { FETCH_POST } from './action';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case FETCH_USER:
+    case FETCH_POST:
       // 只能返回对象，不能返回数组
       return {
         ...state,
-        user: action.payload.data
+        post: action.payload.data
       };
     default:
       return state;
