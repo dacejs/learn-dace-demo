@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Link } from 'dace';
-import { getInitialProps } from 'dace-plugin-redux';
-import { fetchUsers } from './action';
-import reducer from './reducer';
-import Layout from '../../layouts/default';
+import axios from 'axios';
+import Layout from '../layouts/default';
 
-@getInitialProps({
-  reducer,
-  promise: ({ store: { dispatch } }) => dispatch(fetchUsers())
-})
-@connect(state => state)
 export default class Index extends Component {
   static propTypes = {
     users: PropTypes.arrayOf(PropTypes.shape({
@@ -24,6 +15,12 @@ export default class Index extends Component {
     users: []
   }
 
+  static async getInitialProps() {
+    const res = await axios.get('http://jsonplaceholder.typicode.com/users');
+    const users = res.data;
+    return { users };
+  }
+
   render() {
     return (
       <Layout>
@@ -31,9 +28,7 @@ export default class Index extends Component {
         <ol>
           {
             this.props.users.map(user => (
-              <li key={user.id}>
-                <Link to={`/user/${user.id}`}>{user.name}</Link>
-              </li>
+              <li key={user.id}>{user.name}</li>
             ))
           }
         </ol>
